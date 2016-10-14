@@ -1,0 +1,33 @@
+{
+  "name": "esbasejs",
+  "version": "0.1.0",
+  "description": "Utilities depending only on EcmaScript specification",
+  "main": "src/esbase.js",
+  "scripts": {
+    "test": "tsc && ./node_modules/mocha/bin/mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbrekelmans/esbasejs.git"
+  },
+  "keywords": [
+    "utilities",
+    "fast",
+    "small"
+  ],
+  "author": "Jasper Brekelmans <jasperbrekelmans@gmail.com> (jasperbrekelmans.com)",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jbrekelmans/esbasejs/blob/master/LISCENSE-MIT"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/jbrekelmans/esbasejs/issues"
+  },
+  "homepage": "https://github.com/jbrekelmans/esbasejs#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  }
+}
