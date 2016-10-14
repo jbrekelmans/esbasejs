@@ -1,8 +1,8 @@
 {
   "name": "esbasejs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Utilities depending only on EcmaScript specification",
-  "main": "src/esbase.js",
+  "main": "build/esbase.js",
   "scripts": {
     "test": "tsc && ./node_modules/mocha/bin/mocha --reporter spec"
   },
