@@ -1,13 +1,11 @@
-export function isIntegralDouble(value: any): boolean {
-    return typeof value === "number" && value % 1 === 0;
-}
+let _isFinite: (value: any) => boolean = isFinite;
 export function assert(flag: boolean): void {
     if (!flag) {
         throw new Error();
     }
 }
 export function isFiniteDouble(value: any): boolean {
-    return typeof value === "number" && -1/0 < value && value < 1/0;
+    return typeof value === "number" && _isFinite(value);
 }
 
 let Object_prototype_toString = Object.prototype.toString;
@@ -18,6 +16,14 @@ export let isArray: (value: any) => boolean = Array.isArray;
 if (!isFunction(isArray)) {
     isArray = (value: any) => Object_prototype_toString.call(value) === "[object Array]";
 }
+let double_floor = Math.floor;
+let Number_isInteger: (value: any) => boolean = (<any>Number).isInteger;
+if (!isFunction(Number_isInteger)) {
+    Number_isInteger = (x: any) => {
+        return isFiniteDouble(x) && double_floor(x) === x;
+    };
+}
+export let isIntegralDouble = Number_isInteger;
 
 export let double_log10: (x: number) => number = (<any>Math).log10;
 if (!isFunction(double_log10)) {
@@ -26,7 +32,6 @@ if (!isFunction(double_log10)) {
     double_log10 = (x: number) => log(x) * LOG10E;
 }
 
-let double_floor = Math.floor;
 let double_ceil = Math.ceil;
 export function double_roundToZero(x: number): number {
     return (x < 0 ? double_ceil : double_floor)(x);

@@ -1,11 +1,15 @@
 {
   "name": "esbasejs",
-  "version": "0.1.2",
+  "version": "0.1.8",
   "description": "Utilities depending only on EcmaScript specification",
   "main": "./build/esbase",
+  "typings": "./build/esbase",
   "scripts": {
     "test": "tsc && ./node_modules/mocha/bin/mocha --reporter spec"
   },
+  "files": [
+    "build/"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jbrekelmans/esbasejs.git"

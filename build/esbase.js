@@ -1,8 +1,5 @@
 "use strict";
-function isIntegralDouble(value) {
-    return typeof value === "number" && value % 1 === 0;
-}
-exports.isIntegralDouble = isIntegralDouble;
+var _isFinite = isFinite;
 function assert(flag) {
     if (!flag) {
         throw new Error();
@@ -10,7 +7,7 @@ function assert(flag) {
 }
 exports.assert = assert;
 function isFiniteDouble(value) {
-    return typeof value === "number" && -1 / 0 < value && value < 1 / 0;
+    return typeof value === "number" && _isFinite(value);
 }
 exports.isFiniteDouble = isFiniteDouble;
 var Object_prototype_toString = Object.prototype.toString;
@@ -22,13 +19,20 @@ exports.isArray = Array.isArray;
 if (!isFunction(exports.isArray)) {
     exports.isArray = function (value) { return Object_prototype_toString.call(value) === "[object Array]"; };
 }
+var double_floor = Math.floor;
+var Number_isInteger = Number.isInteger;
+if (!isFunction(Number_isInteger)) {
+    Number_isInteger = function (x) {
+        return isFiniteDouble(x) && double_floor(x) === x;
+    };
+}
+exports.isIntegralDouble = Number_isInteger;
 exports.double_log10 = Math.log10;
 if (!isFunction(exports.double_log10)) {
     var log_1 = Math.log;
     var LOG10E_1 = Math.LOG10E;
     exports.double_log10 = function (x) { return log_1(x) * LOG10E_1; };
 }
-var double_floor = Math.floor;
 var double_ceil = Math.ceil;
 function double_roundToZero(x) {
     return (x < 0 ? double_ceil : double_floor)(x);
@@ -53,4 +57,3 @@ exports.toArray = toArray;
     RoundingMode[RoundingMode["TOWARDS_ZERO"] = 4] = "TOWARDS_ZERO";
 })(exports.RoundingMode || (exports.RoundingMode = {}));
 var RoundingMode = exports.RoundingMode;
-//# sourceMappingURL=esbase.js.map
