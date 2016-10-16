@@ -5,10 +5,11 @@
   "main": "./build/esbase",
   "typings": "./build/esbase",
   "scripts": {
-    "test": "tsc && ./node_modules/mocha/bin/mocha --reporter spec"
+    "test": "tsc && ./node_modules/mocha/bin/mocha --require source-map-support/register --reporter spec"
   },
   "files": [
-    "build/"
+    "build/",
+    "src/"
   ],
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "small"
   ],
   "author": "Jasper Brekelmans <jasperbrekelmans@gmail.com> (jasperbrekelmans.com)",
+  "license": "MIT",
   "licenses": [
     {
       "type": "MIT",
@@ -32,6 +34,7 @@
   "homepage": "https://github.com/jbrekelmans/esbasejs#readme",
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "source-map-support": "^0.4.4"
   }
 }
